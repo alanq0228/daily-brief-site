@@ -3,14 +3,22 @@
     { "name": "ITmedia NEWS", "url": "https://rss.itmedia.co.jp/rss/2.0/news_bursts.xml" },
     { "name": "PC Watch", "url": "https://pc.watch.impress.co.jp/data/rss/1.0/pcw/feed.rdf" },
     { "name": "INTERNET Watch", "url": "https://internet.watch.impress.co.jp/data/rss/1.0/iw/feed.rdf" },
-    { "name": "Google News JP AI", "urlTemplate": "https://news.google.com/rss/search?q={query}&hl=ja&gl=JP&ceid=JP:ja", "queryBase": "Japan AI OR 生成AI OR LLM OR AI agent" }
+    { "name": "ASCII.jp", "url": "https://ascii.jp/rss.xml" },
+    { "name": "Publickey", "url": "https://www.publickey1.jp/atom.xml" },
+    { "name": "Google News JP AI", "urlTemplate": "https://news.google.com/rss/search?q={query}&hl=ja&gl=JP&ceid=JP:ja", "queryBase": "Japan AI OR 生成AI OR LLM OR AI agent OR GPU OR datacenter" }
   ],
   "B": [
-    { "name": "Google News JP Storage/Security", "urlTemplate": "https://news.google.com/rss/search?q={query}&hl=ja&gl=JP&ceid=JP:ja", "queryBase": "Japan storage OR NAS OR backup OR cybersecurity OR ランサムウェア OR SSD OR HDD OR Data Lake OR Scale Out Storage" },
-    { "name": "INTERNET Watch Security", "url": "https://internet.watch.impress.co.jp/data/rss/1.0/iw/feed.rdf" }
+    { "name": "Google News JP Storage/Security", "urlTemplate": "https://news.google.com/rss/search?q={query}&hl=ja&gl=JP&ceid=JP:ja", "queryBase": "Japan storage OR NAS OR backup OR cybersecurity OR ランサムウェア OR SSD OR HDD OR Data Lake OR Scale Out Storage OR object storage OR all flash" },
+    { "name": "Google News JP Security Vendor", "urlTemplate": "https://news.google.com/rss/search?q={query}&hl=ja&gl=JP&ceid=JP:ja", "queryBase": "Japan CVE OR ゼロデイ OR 脆弱性 OR ransomware OR backup software" },
+    { "name": "INTERNET Watch Security", "url": "https://internet.watch.impress.co.jp/data/rss/1.0/iw/feed.rdf" },
+    { "name": "The Register Security", "url": "https://www.theregister.com/security/headlines.atom" },
+    { "name": "BleepingComputer", "url": "https://www.bleepingcomputer.com/feed/" }
   ],
   "C": [
-    { "name": "Google News JP Competitors", "urlTemplate": "https://news.google.com/rss/search?q={query}&hl=ja&gl=JP&ceid=JP:ja", "queryBase": "Synology OR Asustor OR Ugreen OR Dell OR NetApp OR IOData OR Buffalo OR Pure Storage OR Newtech Japan" },
-    { "name": "Google News JP NAS Competitors", "urlTemplate": "https://news.google.com/rss/search?q={query}&hl=ja&gl=JP&ceid=JP:ja", "queryBase": "Japan NAS Synology Asustor WD Western Digital Dell NetApp" }
+    { "name": "Google News JP Competitors", "urlTemplate": "https://news.google.com/rss/search?q={query}&hl=ja&gl=JP&ceid=JP:ja", "queryBase": "Synology OR Asustor OR Ugreen OR Dell OR NetApp OR IOData OR Buffalo OR Pure Storage OR Newtech Japan OR QNAP" },
+    { "name": "Google News JP NAS Competitors", "urlTemplate": "https://news.google.com/rss/search?q={query}&hl=ja&gl=JP&ceid=JP:ja", "queryBase": "Japan NAS Synology Asustor WD Western Digital Dell NetApp QNAP" },
+    { "name": "Google News JP Competitor Events", "urlTemplate": "https://news.google.com/rss/search?q={query}&hl=ja&gl=JP&ceid=JP:ja", "queryBase": "Synology event OR Dell event OR NetApp event OR バッファロー 発表 OR アイ・オー・データ 発表" },
+    { "name": "Reddit r/DataHoarder", "url": "https://www.reddit.com/r/DataHoarder/.rss" },
+    { "name": "Hacker News Newest", "url": "https://hnrss.org/newest?points=20" }
   ]
 }
