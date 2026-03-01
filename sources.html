@@ -1,8 +1,76 @@
 <!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'>
 <title>Sources 管理</title><link rel='stylesheet' href='assets/style.css'>
-<style>table{width:100%;border-collapse:collapse}td,th{border:1px solid #334;padding:8px;vertical-align:top}code{white-space:pre-wrap}</style>
-</head><body><main><h1>新聞來源管理</h1>
-<p>目前採用的搜尋來源如下。若要新增/刪除來源，修改 <code>config/sources.json</code> 後重新發布即可。</p>
+<style>
+textarea{width:100%;min-height:380px;background:#121a33;color:#e9edf5;border:1px solid #334;padding:10px;border-radius:8px;font-family:ui-monospace,monospace}
+input{width:100%;max-width:520px;background:#121a33;color:#e9edf5;border:1px solid #334;padding:8px;border-radius:8px}
+button{background:#2a4ea3;color:#fff;border:0;border-radius:8px;padding:10px 14px;cursor:pointer}
+.small{opacity:.8;font-size:.9em}
+</style>
+</head><body><main>
+<h1>新聞來源管理（直接儲存到 GitHub）</h1>
 <p><a href='index.html'>← 回首頁</a></p>
-<h2>A 科技/AI</h2><table><tr><th>#</th><th>來源</th><th>設定</th></tr><tr><td>1</td><td>ITmedia NEWS</td><td><code>https://rss.itmedia.co.jp/rss/2.0/news_bursts.xml</code></td></tr><tr><td>2</td><td>PC Watch</td><td><code>https://pc.watch.impress.co.jp/data/rss/1.0/pcw/feed.rdf</code></td></tr><tr><td>3</td><td>INTERNET Watch</td><td><code>https://internet.watch.impress.co.jp/data/rss/1.0/iw/feed.rdf</code></td></tr><tr><td>4</td><td>Google News JP AI</td><td><code>https://news.google.com/rss/search?q={query}&amp;hl=ja&amp;gl=JP&amp;ceid=JP:ja  queryBase=Japan AI OR 生成AI OR LLM OR AI agent</code></td></tr></table><h2>B 儲存/資安</h2><table><tr><th>#</th><th>來源</th><th>設定</th></tr><tr><td>1</td><td>Google News JP Storage/Security</td><td><code>https://news.google.com/rss/search?q={query}&amp;hl=ja&amp;gl=JP&amp;ceid=JP:ja  queryBase=Japan storage OR NAS OR backup OR cybersecurity OR ランサムウェア OR SSD OR HDD OR Data Lake OR Scale Out Storage</code></td></tr><tr><td>2</td><td>INTERNET Watch Security</td><td><code>https://internet.watch.impress.co.jp/data/rss/1.0/iw/feed.rdf</code></td></tr></table><h2>C 競品</h2><table><tr><th>#</th><th>來源</th><th>設定</th></tr><tr><td>1</td><td>Google News JP Competitors</td><td><code>https://news.google.com/rss/search?q={query}&amp;hl=ja&amp;gl=JP&amp;ceid=JP:ja  queryBase=Synology OR Asustor OR Ugreen OR Dell OR NetApp OR IOData OR Buffalo OR Pure Storage OR Newtech Japan</code></td></tr><tr><td>2</td><td>Google News JP NAS Competitors</td><td><code>https://news.google.com/rss/search?q={query}&amp;hl=ja&amp;gl=JP&amp;ceid=JP:ja  queryBase=Japan NAS Synology Asustor WD Western Digital Dell NetApp</code></td></tr></table>
+<p class='small'>說明：編輯下方 JSON，點「儲存到 GitHub」。需要 GitHub PAT（repo 權限）。Token 只會存在你瀏覽器 localStorage。</p>
+<p><label>GitHub PAT：<br><input id='token' type='password' placeholder='ghp_xxx...'></label></p>
+<p><label>Repo（owner/name）：<br><input id='repo' value='alanq0228/daily-brief-site'></label></p>
+<p><label>Branch：<br><input id='branch' value='main'></label></p>
+<p><label>檔案路徑：<br><input id='path' value='sources.json'></label></p>
+<textarea id='json'>{
+  &quot;A&quot;: [
+    { &quot;name&quot;: &quot;ITmedia NEWS&quot;, &quot;url&quot;: &quot;https://rss.itmedia.co.jp/rss/2.0/news_bursts.xml&quot; },
+    { &quot;name&quot;: &quot;PC Watch&quot;, &quot;url&quot;: &quot;https://pc.watch.impress.co.jp/data/rss/1.0/pcw/feed.rdf&quot; },
+    { &quot;name&quot;: &quot;INTERNET Watch&quot;, &quot;url&quot;: &quot;https://internet.watch.impress.co.jp/data/rss/1.0/iw/feed.rdf&quot; },
+    { &quot;name&quot;: &quot;Google News JP AI&quot;, &quot;urlTemplate&quot;: &quot;https://news.google.com/rss/search?q={query}&amp;hl=ja&amp;gl=JP&amp;ceid=JP:ja&quot;, &quot;queryBase&quot;: &quot;Japan AI OR 生成AI OR LLM OR AI agent&quot; }
+  ],
+  &quot;B&quot;: [
+    { &quot;name&quot;: &quot;Google News JP Storage/Security&quot;, &quot;urlTemplate&quot;: &quot;https://news.google.com/rss/search?q={query}&amp;hl=ja&amp;gl=JP&amp;ceid=JP:ja&quot;, &quot;queryBase&quot;: &quot;Japan storage OR NAS OR backup OR cybersecurity OR ランサムウェア OR SSD OR HDD OR Data Lake OR Scale Out Storage&quot; },
+    { &quot;name&quot;: &quot;INTERNET Watch Security&quot;, &quot;url&quot;: &quot;https://internet.watch.impress.co.jp/data/rss/1.0/iw/feed.rdf&quot; }
+  ],
+  &quot;C&quot;: [
+    { &quot;name&quot;: &quot;Google News JP Competitors&quot;, &quot;urlTemplate&quot;: &quot;https://news.google.com/rss/search?q={query}&amp;hl=ja&amp;gl=JP&amp;ceid=JP:ja&quot;, &quot;queryBase&quot;: &quot;Synology OR Asustor OR Ugreen OR Dell OR NetApp OR IOData OR Buffalo OR Pure Storage OR Newtech Japan&quot; },
+    { &quot;name&quot;: &quot;Google News JP NAS Competitors&quot;, &quot;urlTemplate&quot;: &quot;https://news.google.com/rss/search?q={query}&amp;hl=ja&amp;gl=JP&amp;ceid=JP:ja&quot;, &quot;queryBase&quot;: &quot;Japan NAS Synology Asustor WD Western Digital Dell NetApp&quot; }
+  ]
+}
+</textarea>
+<p>
+  <button onclick='saveToGithub()'>儲存到 GitHub</button>
+  <button onclick='loadFromGithub()'>從 GitHub 重新載入</button>
+</p>
+<pre id='log'></pre>
+<script>
+const $ = (id)=>document.getElementById(id);
+['token','repo','branch','path'].forEach(k=>{ const v=localStorage.getItem('srcmgr_'+k); if(v) $(k).value=v; });
+function log(s){ $('log').textContent = s; }
+function persist(){ ['token','repo','branch','path'].forEach(k=>localStorage.setItem('srcmgr_'+k,$(k).value)); }
+function b64(str){ return btoa(unescape(encodeURIComponent(str))); }
+function ub64(str){ return decodeURIComponent(escape(atob(str))); }
+async function ghGet(){
+  persist();
+  const [owner,name]=$('repo').value.split('/');
+  const url=`https://api.github.com/repos/${owner}/${name}/contents/${$('path').value}?ref=${$('branch').value}`;
+  const r=await fetch(url,{headers:{'Authorization':'Bearer '+$('token').value,'Accept':'application/vnd.github+json'}});
+  if(!r.ok) throw new Error('GET failed '+r.status);
+  return await r.json();
+}
+async function loadFromGithub(){
+  try{
+    const d=await ghGet();
+    $('json').value = ub64((d.content||'').replace(/\n/g,''));
+    log('Loaded from GitHub');
+  }catch(e){log(String(e));}
+}
+async function saveToGithub(){
+  try{
+    persist();
+    const text=$('json').value;
+    JSON.parse(text);
+    const cur=await ghGet();
+    const [owner,name]=$('repo').value.split('/');
+    const url=`https://api.github.com/repos/${owner}/${name}/contents/${$('path').value}`;
+    const body={message:'Update sources via web manager',content:b64(text),sha:cur.sha,branch:$('branch').value};
+    const r=await fetch(url,{method:'PUT',headers:{'Authorization':'Bearer '+$('token').value,'Accept':'application/vnd.github+json'},body:JSON.stringify(body)});
+    if(!r.ok) throw new Error('PUT failed '+r.status+' '+await r.text());
+    log('Saved ✅ 重新跑一次發布流程後，報告就會用新來源。');
+  }catch(e){log(String(e));}
+}
+</script>
 </main></body></html>
